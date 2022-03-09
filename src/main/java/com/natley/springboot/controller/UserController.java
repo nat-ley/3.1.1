@@ -34,6 +34,7 @@ public class UserController {
 	public String newUserForm(Model model) {
 		User user = new User();
 		model.addAttribute("user", user);
+		model.addAttribute("allRoles", roleService.getAll());
 		return "new_user";
 	}
 

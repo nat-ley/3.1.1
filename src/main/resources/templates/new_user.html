@@ -26,6 +26,14 @@
         <label>Password:</label>
         <input placeholder="Password" th:field="*{password}" type="text"/>
     </div>
+    <div>
+        <input name="roles" th:each="role : ${allRoles}"
+               th:field="*{roles}"
+               th:text="${role.getName()}"
+               th:value="${role.getId()}"
+               type="checkbox"
+        />
+    </div>
     <br>
     <input type="submit" value="Submit"/>
 </form>
