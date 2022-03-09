@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.security.Principal;
 
 @Controller
@@ -33,7 +34,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/save")
-	public String saveUser(@ModelAttribute("user") User user) {
+	public String saveUser(@Valid @ModelAttribute("user") User user) {
 		userService.save(user);
 		return "redirect:/admin";
 	}

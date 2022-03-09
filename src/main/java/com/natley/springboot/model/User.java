@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.Collection;
 import java.util.Set;
 
@@ -22,7 +24,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NotEmpty
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
@@ -32,9 +34,11 @@ public class User implements UserDetails {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "EMAIL")
+    @NotBlank
+    @Column(name = "EMAIL", unique = true)
     private String email;
 
+    @NotBlank
     @Column(name = "PASSWORD")
     private String password;
 
