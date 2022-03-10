@@ -152,20 +152,20 @@
                                                                 <label for="email_edit">Email</label>
                                                                 <input type="text" class="form-control"
                                                                        id="email_edit" name="email"
-                                                                       th:value="${user.email}">
+                                                                       th:value="${user.email}" required>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="password_edit">Password</label>
                                                                 <input type="password" class="form-control"
-                                                                       id="password_edit" name="password">
+                                                                       id="password_edit" name="password" required>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="roles_edit">Roles</label>
                                                                 <select class="custom-select"
                                                                         th:size="${allRoles.size()}" id="roles_edit"
-                                                                        name="roles" multiple>
+                                                                        name="roles" multiple required>
                                                                     <option th:each="role :${allRoles}"
                                                                             th:value="${role.id}"
                                                                             th:text="${role.name}"></option>
@@ -272,17 +272,17 @@
                                             <div class="form-group">
                                                 <label for="email">Email</label>
                                                 <input type="text" class="form-control"
-                                                       id="email" name="email">
+                                                       id="email" name="email" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="password">Password</label>
                                                 <input type="password" class="form-control"
-                                                       id="password" name="password">
+                                                       id="password" name="password" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="roles">Roles</label>
                                                 <select class="custom-select" th:size="${allRoles.size()}" id="roles"
-                                                        name="roles" multiple>
+                                                        name="roles" multiple required>
                                                     <option th:each="role :${allRoles}" th:value="${role.id}"
                                                             th:text="${role.name}"></option>
                                                 </select>
