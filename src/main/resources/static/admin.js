@@ -84,11 +84,13 @@ function addNewUser(e) {
             roles: $('#roles_new').val().map(it => roles_map.get(it)),
         }),
         headers: {'Content-Type': 'application/json'}
+    }).then(response => {
+        if (response.ok) {
+            e.preventDefault()
+            $('.nav-tabs a[href="#users-table"]').tab('show');
+            updateTable()
+        }
     })
-
-    e.preventDefault()
-    $('.nav-tabs a[href="#users-table"]').tab('show');
-    setTimeout(updateTable, 100)
 }
 
 function fillEditModal(userId) {
@@ -117,11 +119,13 @@ function editUser(e) {
             roles: $('#roles_edit').val().map(it => roles_map.get(it)),
         }),
         headers: {'Content-Type': 'application/json'}
+    }).then(response => {
+        if (response.ok) {
+            e.preventDefault()
+            $('#modalEdit').modal('hide')
+            updateTable()
+        }
     })
-
-    e.preventDefault()
-    $('#modalEdit').modal('hide')
-    setTimeout(updateTable, 100)
 }
 
 function fillDeleteModal(userId) {
@@ -140,10 +144,13 @@ function fillDeleteModal(userId) {
 
 function deleteUser(e) {
     fetch(user_api + $('#id_delete').val(), {method: 'DELETE'})
-
-    e.preventDefault()
-    $('#modalDelete').modal('hide')
-    setTimeout(updateTable, 100)
+        .then(response => {
+            if (response.ok) {
+                e.preventDefault()
+                $('#modalDelete').modal('hide')
+                updateTable()
+            }
+        })
 }
 
 function fillRoles() {
